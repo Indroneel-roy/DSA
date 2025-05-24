@@ -25,7 +25,7 @@ def list_to_linkedlist_with_cycle(items: List[int], pos: int) -> Optional[ListNo
     if pos == 0:
         cycle_node = head
 
-    for i, val in enumerate(items[1:], 1):
+    for i, val in enumerate(items[1:], 1): # last 1 means index will also start from 1
         current.next = ListNode(val)
         current = current.next
         if i == pos:

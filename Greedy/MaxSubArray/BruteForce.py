@@ -16,3 +16,7 @@ if __name__ == "__main__":
     s = Solution()
     print(s.maxSubArray(nums))             
                 
+# Time complexity is O(n**2)
+# Space complexity is O(1)                
+                
+                
