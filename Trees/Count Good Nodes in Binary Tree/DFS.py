@@ -1,0 +1,54 @@
+# Problem Link : https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/
+from typing import List, Optional
+from collections import deque
+
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -> int:
+        def dfs(node, MaxVal):
+            if not node:
+                return 0
+            res = 1 if node.val >= MaxVal else 0
+            MaxVal = max(MaxVal, node.val)
+            res += dfs(node.left, MaxVal)
+            res += dfs(node.right, MaxVal)
+            return res
+        return dfs(root, root.val)     
+
+##Helper function to create tree
+def build_tree(nodes: List[Optional[int]]) -> Optional[TreeNode]:
+    if not nodes:
+        return None
+
+    root = TreeNode(nodes[0])
+    queue = deque([root])
+    index = 1
+
+    while queue and index < len(nodes):
+        node = queue.popleft()
+
+        # Left child
+        if index < len(nodes) and nodes[index] is not None:
+            node.left = TreeNode(nodes[index])
+            queue.append(node.left)
+        index += 1
+
+        # Right child
+        if index < len(nodes) and nodes[index] is not None:
+            node.right = TreeNode(nodes[index])
+            queue.append(node.right)
+        index += 1
+
+    return root     
+if __name__ == "__main__":
+    root = [3,1,4,3,None,1,5]
+    root = build_tree(root)
+    sol = Solution()
+    res = sol.goodNodes(root)
+    print(res)
+             
