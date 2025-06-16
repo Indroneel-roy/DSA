@@ -26,7 +26,7 @@ def build_max_heap(heap):
     heap_size = len(heap) - 1
     for i in range(heap_size // 2, 0, -1):
         max_heapify(heap, heap_size, i)
-        print(heap)
+        # print(heap)
 
 def heap_sort(heap):
     build_max_heap(heap)
@@ -35,6 +35,7 @@ def heap_sort(heap):
         heap[1], heap[i] = heap[i], heap[1]
         heap_size -= 1
         max_heapify(heap, heap_size, 1)
+        print(heap)
 
 if __name__ == "__main__":
     heap = [None, 12, 7, 1, 3, 10, 17, 19, 2, 5]
