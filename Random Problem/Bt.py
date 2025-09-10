@@ -51,6 +51,7 @@ if __name__ == "__main__":
     tree.insert(3)
     tree.insert(4)
     tree.insert(5)
+    
 
     print("Inorder Traversal: ")
     tree.inorder(tree.root)   # Output: 4 2 5 1 3
